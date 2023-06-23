@@ -10,8 +10,8 @@ export const createCollectionIndex = async (
 ): Promise<TObject> => {
   const faunaQuery = new faunadb.Client(dbConfig(config))
   try {
-    const collectionName = getCollectionName(params?.collectionName)
-    const indexName = getIndexName(params?.indexTerm, params.collectionName)
+    const collectionName = getCollectionName(params?.sourceCollection)
+    const indexName = getIndexName(params?.indexTerm, params.sourceCollection)
 
     const indexExists = await faunaQuery.query(q.Exists(q.Index(indexName)))
     if (indexExists) return {}

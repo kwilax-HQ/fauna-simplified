@@ -1,6 +1,6 @@
 import faunadb from 'faunadb'
 
-type helloXXXXXX = faunadb.RequestResult
+type hello = faunadb.RequestResult
 interface IFaunaConfig {
   secret: string
   domain?: string
@@ -29,17 +29,18 @@ interface ICreateCollection {
   data?: Record<string, unknown>
   history_days?: number // 0
   ttl_days?: number // null
-  // permissions?: object;
+  permissions?: Record<string, unknown>
 }
 
 interface ICreateCollectionIndex {
   // name: string; // Cannot be events, sets, self, documents, or _. Cannot have the % character.
-  collectionName: string
+  sourceCollection: string
   indexTerm: string // terms field to be indexed. this would be added in the terms field in faunaDB
   // values (would not use)
   unique?: boolean
   serialized?: boolean
   data?: Record<string, unknown>
+  permissions?: Record<string, unknown>
 }
 
 ////////////////////////////////////////////////// SCHEMA //////////////////////////////////////////////////

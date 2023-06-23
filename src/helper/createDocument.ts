@@ -28,7 +28,7 @@ interface ICreateDocument {
 }
 
 const generateListOfCollectionIndexParams = (
-  collectionName: string,
+  sourceCollection: string,
   collectionSchema: ISchemaType
 ) => {
   const listOfIndex: ICreateCollectionIndex[] = []
@@ -38,7 +38,7 @@ const generateListOfCollectionIndexParams = (
 
     if (typeof schemaValue !== 'string' && schemaValue.index) {
       const newIndex: ICreateCollectionIndex = {
-        collectionName,
+        sourceCollection,
         indexTerm: key,
         unique: false,
         serialized: true,
