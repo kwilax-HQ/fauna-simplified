@@ -399,7 +399,7 @@ const response = await faunaInstance.createCollection({
 | data (optional)   | object      | Additional data associated with the index.                                                              |
 | permissions (optional)| object      | Permissions associated with the collection.                    |
 
-Please note that the params of **CreateCollectionIndex** has been slightly modified for ease of use
+> Please note that the params of **CreateCollectionIndex** has been slightly modified for ease of use
 
 
 ## Contributing
