@@ -26,7 +26,8 @@ I am open to contributions, suggestions, and feature requests. [github contact](
     - [upsert](#upsert)
     - [replace](#replace)
     - [Delete](#delete)
-  - x// Model Methods Create Exists Find FindByIndex FindAll Update Upsert Replace Delete
+  - [CreateCollection](#createcollection)
+  - [CreateCollectionIndex](#createcollectionindex)
 
 ## Features
 - Simplified API: The library offers a simplified API that abstracts away the complexity of FaunaDB's native API, allowing you to focus on your application logic rather than low-level database interactions.
@@ -150,7 +151,7 @@ model is the primary method on the faunaInstance. it takes the name and schema o
  
  > you can change the document schema at any time
  
- > If the updated item in the schema needs indexed, you would need to create the index with **createCollectionIndex** method
+ > If the updated item in the schema needs indexed, you would need to create the index with [CreateCollectionIndex](#createcollectionindex) method
 
   ### Model Example
   ```
@@ -228,13 +229,13 @@ model is the primary method on the faunaInstance. it takes the name and schema o
   - **unique**: flags the value as unique i.e. every entry must be unique. Not applicable to boolean and date
   > The "id" field is reserved for the [fauna document reference (Ref)](https://docs.fauna.com/fauna/current/learn/understanding/types?lang=shell#ref). This means any "id", "iD", "Id", "ID" provided in you document would not saved be saved.
   
-  > If you want to provide your document id, checkout the **[Model.create method]()**.
+  > If you want to provide your document id, checkout the **[Model.create method](#create)**.
  
   > **date type:** Use the date type for any date/time input tells this library to convert it to fauna datatype during input and back to ISO string at the output. The expected and returned type is ISO string.
 
  ## Model Methods
   ### Create
-  It creates a document in the Models collection. If run for the first time, it creates the collection and all indexes based on the schema. For naming convention, refer **"CreateCollection"** & **"CreateCollectionIndex"**
+  It creates a document in the Models collection. If run for the first time, it creates the collection and all indexes based on the schema. For naming convention, refer [CreateCollection](#createcollection) & [CreateCollectionIndex](#createcollectionindex)
   ```
   const userData = {
       name: 'Airforce One',
