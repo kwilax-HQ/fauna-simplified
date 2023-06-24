@@ -3,6 +3,9 @@
 
 @kwilax/fauna-simplified is a JavaScript library that simplifies the usage of  [FaunaDB](https://fauna.com/) a flexible serverless database. It provides an intuitive and streamlined interface for interacting with FaunaDB, making it easier to perform common database operations and work with data models.
 
+## Motivation
+[Fauna is very lovable database](https://docs.fauna.com/fauna/current/learn/introduction/document_relational#why-developers-love-fauna). However, working with rea [FQL](https://docs.fauna.com/fauna/current/api/fql/) can be verbose and requires to be learnt. This library aims at giving developers the benefits of [FaunaDB](https://fauna.com/) without hussle
+
 ## Features
 - Simplified API: The library offers a simplified API that abstracts away the complexity of FaunaDB's native API, allowing you to focus on your application logic rather than low-level database interactions.
 - Easy Setup: The library provides a straightforward setup process, requiring minimal configuration to connect to your FaunaDB instance.
@@ -27,7 +30,7 @@ const FaunaSimplified = require('@kwilax/fauna-simplified');
 
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 
-const ProductModel = faunaInstance.model('product', {
+const Product = faunaInstance.model('product', {
       name: 'string',
       description: 'string',
       store: {
@@ -137,7 +140,7 @@ import FaunaSimplified from '@kwilax/fauna-simplified';
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 // product is the collection name
 // {...} is the schema
-const ProductModel = faunaInstance.model('product', {
+const Product = faunaInstance.model('product', {
       name: 'string',
       description: 'string',
       store: {
@@ -208,22 +211,23 @@ const ProductModel = faunaInstance.model('product', {
   - FindAll
     ```
     const response = await Product.FindAll()
-    [
-        {
-        name: 'Airforce One',
-        store: 'New Shoes Venture',
-        id: '368313122636693584',
-        createdAt: '2023-06-23T08:40:10.217Z',
-        category: 'Snickers'
-        },
-        {
-        name: 'air max 90',
-        store: 'New Shoes Venture',
-        id: '368313122636693768',
-        createdAt: '2023-06-23T08:40:10.217Z',
-        category: 'Snickers'
-        }
-    ]
+    console.log(response)
+    //  [
+    //      {
+    //      name: 'Airforce One',
+    //      store: 'New Shoes Venture',
+    //      id: '368313122636693584',
+    //      createdAt: '2023-06-23T08:40:10.217Z',
+    //      category: 'Snickers'
+    //      },
+    //      {
+    //      name: 'air max 90',
+    //      store: 'New Shoes Venture',
+    //      id: '368313122636693768',
+    //      createdAt: '2023-06-23T08:40:10.217Z',
+    //      category: 'Snickers'
+    //      }
+    //  ]
     ```
 
   - Update
@@ -253,12 +257,14 @@ const ProductModel = faunaInstance.model('product', {
     ```
 
 ## CreateCollection
-The [fauna collection](https://docs.fauna.com/fauna/current/learn/introduction/key_concepts#collections) is the SQL equivalent of a table. You may not need to call this method as the **model.create** method create a collection and indexes based on the schema on saving the first time/
+The [fauna collection](https://docs.fauna.com/fauna/current/learn/introduction/key_concepts#collections) is the SQL equivalent of a table. You may not need to call this method as the **model.create** method create the collection and all indexes based on the schema on saving the first document. To create a collection you may pass only the collection name or a configuration params.
 ```
 import FaunaSimplified from '@kwilax/fauna-simplified';
 
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 
+//  const response = await faunaInstance.createCollection("product")
+//  or
 const response = await faunaInstance.createCollection({name: "product"})
 //  {
 //    ref: Collection("products"),

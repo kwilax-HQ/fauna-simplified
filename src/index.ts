@@ -40,7 +40,8 @@ export default class FaunaSimplified {
     return await this.asyncWrapper(this.faunaClient.query(asyncFunction))
   }
 
-  async createCollection(params: ICreateCollection) {
+  async createCollection(config: string | ICreateCollection) {
+    const params = typeof config === 'string' ? { name: config } : config
     return await this.asyncWrapper(createCollection(params, this.userConfig))
   }
   async createCollectionIndex(params: ICreateCollectionIndex) {
