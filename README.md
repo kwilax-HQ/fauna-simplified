@@ -20,10 +20,10 @@ npm i @kwilax/fauna-simplified
 Here's a basic example of how to use @kwilax/fauna-simplified to perform common database operations:
 ```
 // Using ES6 import
-import {FaunaSimplified} from '@kwilax/fauna-simplified';
+import FaunaSimplified from '@kwilax/fauna-simplified';
 
 // Using commonjs require
-const {FaunaSimplified} = require('@kwilax/fauna-simplified');
+const FaunaSimplified = require('@kwilax/fauna-simplified');
 
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 
@@ -132,7 +132,7 @@ model is the primary method on the faunaInstance. it takes collection name and s
 
 ### Model object
 ```
-import {FaunaSimplified} from '@kwilax/fauna-simplified';
+import FaunaSimplified from '@kwilax/fauna-simplified';
 
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 // product is the collection name
@@ -255,7 +255,7 @@ const ProductModel = faunaInstance.model('product', {
 ## CreateCollection
 The [fauna collection](https://docs.fauna.com/fauna/current/learn/introduction/key_concepts#collections) is the SQL equivalent of a table. You may not need to call this method as the **model.create** method create a collection and indexes based on the schema on saving the first time/
 ```
-import {FaunaSimplified} from '@kwilax/fauna-simplified';
+import FaunaSimplified from '@kwilax/fauna-simplified';
 
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 
@@ -280,7 +280,7 @@ const response = await faunaInstance.createCollection({name: "product"})
 ## CreateCollectionIndex
 [learm more about fauna index](https://docs.fauna.com/fauna/current/api/fql/indexes?lang=shell)
 ```
-import {FaunaSimplified} from '@kwilax/fauna-simplified';
+import FaunaSimplified from '@kwilax/fauna-simplified';
 
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 const response = await faunaInstance.createCollection({

@@ -23,6 +23,8 @@ export const sanitizeDocumentOutput = (
     }
   }
 
+  //
+
   const query = q.Let(
     {
       document: requestQuery,

@@ -23,7 +23,7 @@ import {
 
 const q = faunadb.query
 
-export class FaunaSimplified {
+export default class FaunaSimplified {
   private faunaClient: faunadb.Client
   protected userConfig: TFaunaConfig
   constructor(config: TFaunaConfig) {
