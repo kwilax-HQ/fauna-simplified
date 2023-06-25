@@ -8,12 +8,11 @@ export const sanitizeDocumentInput = (
   schema: ISchemaType,
   useDefault = false
 ): Record<string, unknown> => {
-  const output: Record<string, unknown> = {}
-
   delete document.id
   delete document.iD
   delete document.Id
   delete document.ID
+  const output: Record<string, unknown> = { ...document }
 
   for (const key in schema) {
     const schemaValue: TSchemaValue = schema[key]

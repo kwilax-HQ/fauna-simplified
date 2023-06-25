@@ -57,58 +57,28 @@ Here's a basic example of how to use @kwilax/fauna-simplified to perform common 
 // Using ES6 import
 import FaunaSimplified from '@kwilax/fauna-simplified';
 
-// Using commonjs require
-const FaunaSimplified = require('@kwilax/fauna-simplified');
-
 const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 
 const Product = faunaInstance.model('product', {
       name: 'string',
-      description: 'string',
-      store: {
-        type: 'string',
-        default: 'New Shoes Venture',
-        index: true,
-      },
-      category: {
-        type: 'string',
-        default: 'general',
-        index: true,
-      },
-      createdAt: {
-        type: 'date',
-        default: new Date().toISOString(),
-      },
+      price: 'number',
 })
 
-const newProduct ={
-    name: 'Airforce One',
-    category: 'Snickers',
-}
-
-// Using Promise
-Product.Create(newProduct)
+Product.Create({name: 'Airforce One', price: 1500})
   .then(response => console.log(response))
   .catch(error => console.log(error.description))
 
-// Using async/await
+```
+If you prefer async/await  
+```
 const CreateProduct = async () => {
   try {
-    const response = await Product.Create(newProduct)
+    const response = await Product.Create({name: 'Airforce One', price: 1500})
     console.log('response', response)
   } catch (error) {
     console.log('error', error.description)
   }
 }
-
-// Sample response
-// {
-//   name: 'Airforce One Max',
-//   store: 'New Shoes Venture',
-//   id: '368313122636693584',
-//   createdAt: '2023-06-23T08:40:10.217Z',
-//   category: 'Snickers'
-// }
 ```
 
 ## Configuration
@@ -159,8 +129,6 @@ model is the primary method on the faunaInstance. it takes the name and schema o
   
   const faunaInstance = new FaunaSimplified(Your_FaunaDB_Key)
 
-  const name = 'product';
-
   const schema = {
     name: 'string',
     description: 'string',
@@ -169,20 +137,12 @@ model is the primary method on the faunaInstance. it takes the name and schema o
       default: 'New Shoes Venture',
       index: true,
     },
-    category: {
-      type: 'string',
-      default: 'general',
-      index: true,
-    },
-    createdAt: {
-      type: 'date',
-      default: new Date().toISOString(),
-    },
   }
 
   //document model
-  const Product = faunaInstance.model(name, schema)
+  const Product = faunaInstance.model('product', schema)
   ```
+  > You may not need to provide every input in the schema. The schema however helps with indexing, providing defaults and converting data(when you need to compare on the database)
 
   ### Model Schema
   - The Schema can either be a string with the type as value
