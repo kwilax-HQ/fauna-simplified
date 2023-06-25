@@ -1,4 +1,3 @@
-import faunadb from 'faunadb'
 import { TObject } from '../declaration'
 
 export { sanitizeDocumentInput } from './sanitizeDocumentInput'
@@ -9,8 +8,7 @@ export {
 export { dbConfig } from './dbConfig'
 
 function capitalizeFirstLetter(word: string) {
-  const loserCasedWord = word.toLowerCase()
-  return loserCasedWord.charAt(0).toUpperCase() + loserCasedWord.slice(1)
+  return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
 export function getCollectionName(collectionName: string): string {
