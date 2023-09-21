@@ -1,6 +1,6 @@
 {
   "name": "@kwilax/fauna-simplified",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A lightweight wrapper for FaunaDB, simplifying database interactions and providing a convenient way to work with data models.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
